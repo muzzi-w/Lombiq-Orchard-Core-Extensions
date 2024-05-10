@@ -23,6 +23,8 @@ public class BehaviorUIKitShowcaseTests : UITestBase
             configuration => configuration.HtmlValidationConfiguration.AssertHtmlValidationResultAsync =
                 async validationResult =>
                 {
+                    configuration.HtmlValidationConfiguration.WithRelativeConfigPath("NoUniqueLandmark.htmlvalidate.json");
+
                     // Error filtering due to https://github.com/OrchardCMS/OrchardCore/issues/15222,
                     // can be removed once it is resolved.
                     var errors = (await validationResult.GetErrorsAsync())
